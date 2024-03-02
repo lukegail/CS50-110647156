@@ -1,0 +1,79 @@
+<!-- type 'http-server' in terminal to create a webserver.
+follow the provided link to a webpage representing the content of
+whatever directory was open when the server was created-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Scoreboard</title>
+        <style>
+            table {
+                border: 1px solid black;
+                border-collapse: collapse;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+            #add1 {
+                background-color: #8fbc8f;
+                border: .5pt solid;
+                border-radius: 5px;
+
+            }
+            #add2 {
+                background-color: #00bfff;
+                border: .5pt solid;
+                border-radius: 5px;
+            }
+
+            td {
+                border: 1px solid black;
+            }
+            .title {
+                background-color: silver;
+            }
+
+            .centered {
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body style="text-align:center;">
+        <h1>Duke vs. UNC Basketball Game</h1>
+        <main>
+            <p>Click the buttons to add points to each team</p>
+            <table>
+                <tr>
+                    <td class="title">Team 1</td>
+                    <td class="title">Team 2</td>
+                </tr>
+                <tr>
+                    <td id="score1">0</td>
+                    <td id="score2">0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="add1">+1</button>
+                    </td>
+                    <td>
+                        <button id="add2">+1</button>
+                    </td>
+                </tr>
+            </table>
+        </main>
+        <script>
+            let team1 = 0;
+            let team2 = 0;
+
+            document.querySelector('#add1').onclick = function() {
+                team1 = team1 + 1;
+                document.querySelector('#score1').innerHTML = team1;
+            }
+
+            document.querySelector('#add2').onclick = function() {
+                team2 = team2 + 1;
+                document.querySelector('#score2').innerHTML = team2;
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+{
+    "C_Cpp.autocomplete": "disabled",
+    "C_Cpp.formatting": "clangFormat",
+    "editor.formatOnSave": false,
+    "gitdoc.enabled": true,
+    "files.associations": {
+        "stdio.h": "c"
+    }
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "python.terminal.executeInFileDir": true,
+    "terminal.integrated.shell.linux": "bash",
+    "workbench.colorTheme": "GitHub Dark Default",
+}

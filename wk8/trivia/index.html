@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to button question
+            function checkButtonAnswer(isCorrect) {
+                if (isCorrect) {
+                    document.getElementById("answer-button").textContent = "Correct!";
+                } else {
+                    document.getElementById("answer-button").textContent = "Incorrect";
+                }
+            }
+
+            // TODO: Add code to check answers to text question
+            function checkTextAnswer() {
+                var userInput = document.getElementById("answer-input").value;
+                var correctAnswer = "Gremlin";
+                var inputField = document.getElementById("answer-input"); // Get the input field
+
+                if (userInput === correctAnswer) {
+                    document.getElementById("answer-text").textContent = "Correct!";
+                    inputField.style.backgroundColor = "green"; // Set to green if correct
+                } else {
+                    document.getElementById("answer-text").textContent = "Incorrect";
+                    inputField.style.backgroundColor = "red"; // Set to red if incorrect
+                }
+
+                return false; // Prevent the form from submitting and refreshing the page
+                }
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section; padding">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What does Katie hate? </h3>
+                <h3>
+                    <p id="answer-button"></p>
+                </h1>
+                <div>
+                    <button id="bev" onClick="checkButtonAnswer(false)">cozy hot bev</button>
+                    <br>
+                    <button id="steps" onClick="checkButtonAnswer(false)">10000 steps</button>
+                    <br>
+                    <button id="show" onClick="checkButtonAnswer(false)">Psychological mystery-crime drama thrillers
+                    <!-- featuring compelling female leads with unyielding determination,
+                    set against rich, transcendent atmospheric depth, punctuated by moments of raw emotional complexity
+                    that delve into themes of identity, trauma, and moral ambiguity, while also engaging with social issues like
+                    gender dynamics and societal norms, and incorporating elements of ancient folklore to add layers of mystery,
+                    elevating the story beyond straightforward crime-solving with intricate plots full of secrets and twists
+                    that keep viewers questioning what is and isn't as it seems</button> -->
+                    <br>
+                    <button id="luke" onClick="checkButtonAnswer(false)">luke</button>
+                    <br>
+                    <button id="nana" onClick="checkButtonAnswer(true)">banana</button>
+                </div>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>
+                    What's the cat's name who you love the best?
+                </h3>
+                <h3>
+                    <p id="answer-text"></p>
+                </h1>
+                <form onsubmit="return checkTextAnswer()">
+                    <input type="text" id="answer-input" required autocomplete="off">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+<!DOCTYPE html> <!-- Declares the document type and HTML version being used -->
+
+<html lang="en"> <!-- Specifies that the language of the content is English -->
+
+    <head> <!-- Contains metadata and links to external resources like CSS and JavaScript -->
+
+        <!-- Link to a Google Font to be used in the website -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+
+        <!-- Link to the external stylesheet file named "styles.css" -->
+        <link href="styles.css" rel="stylesheet">
+
+        <!-- Sets the title of the webpage, which appears in the browser's title bar or tab -->
+        <title>Trivia!</title>
+
+        <script> // Begins the JavaScript code section
+
+            // Define a JavaScript function named 'checkButtonAnswer'
+            function checkButtonAnswer(isCorrect) {
+                // 'isCorrect' is a parameter that will be passed when the function is called
+
+                // Use an 'if' statement to check the value of 'isCorrect'
+                if (isCorrect) {
+                    // If 'isCorrect' is true, execute the following line
+
+                    // Finds the HTML element with the ID "answer-button" and sets its text content to "Correct!"
+                    // 'document' is the root object representing the HTML document.
+                    // 'getElementById' is a method that returns the element with the specified ID.
+                    // '.textContent' is a property that sets or returns the text content of a node and its descendants.
+                    document.getElementById("answer-button").textContent = "Correct!";
+                } else {
+                    // If 'isCorrect' is false, execute the following line
+
+                    // Sets the text content to "Incorrect" for the same HTML element
+                    document.getElementById("answer-button").textContent = "Incorrect";
+                }
+            }
+
+            // Define another JavaScript function named 'checkTextAnswer'
+            function checkTextAnswer() {
+                // No parameters for this function
+
+                // Retrieve the value input by the user into the HTML text box with ID "answer-input"
+                // The '.value' property gets the value attribute of the <input> element
+                var userInput = document.getElementById("answer-input").value;
+
+                // Declare a variable to hold the correct answer, hard-coded as "Gremlin"
+                var correctAnswer = "Gremlin";
+
+                // Retrieve the HTML element of the input box to change its background color later
+                var inputField = document.getElementById("answer-input");
+
+                // Use an 'if' statement to check if 'userInput' matches 'correctAnswer'
+                if (userInput === correctAnswer) {
+                    // If they match, execute the following lines
+
+                    // Set the text content to "Correct!" for the HTML element with ID "answer-text"
+                    document.getElementById("answer-text").textContent = "Correct!";
+
+                    // Change the background color of the input field to green
+                    // '.style.backgroundColor' is a property to set the background color of an element
+                    inputField.style.backgroundColor = "green";
+                } else {
+                    // If they don't match, execute the following lines
+
+                    // Set the text content to "Incorrect" for the HTML element with ID "answer-text"
+                    document.getElementById("answer-text").textContent = "Incorrect";
+
+                    // Change the background color of the input field to red
+                    inputField.style.backgroundColor = "red";
+                }
+
+                // 'return false' prevents the HTML form from actually submitting, which would refresh the page
+                return false;
+            }
+        </script> <!-- Ends the JavaScript code section -->
+
+    </head> <!-- Ends the head section -->
+
+
+
+    <body> <!-- Starts the body of the HTML document where the content goes -->
+
+        <!-- Div wrapper for the header section -->
+        <div class="header">
+
+            <!-- Main title for the trivia -->
+            <h1>Trivia!</h1>
+
+        </div>
+
+        <!-- Main container div for content -->
+        <div class="container">
+
+            <!-- Div for the first section: Multiple Choice -->
+            <div class="section; padding">
+
+                <!-- Title for the multiple-choice part -->
+                <h2>Part 1: Multiple Choice </h2>
+                <hr> <!-- Horizontal line for visual separation -->
+
+                <!-- The question for the multiple-choice section -->
+                <h3>What does Katie hate? </h3>
+
+                <!-- Placeholder for the answer, will be filled by JavaScript -->
+                <h3>
+                    <p id="answer-button"></p>
+                </h3>
+
+                <!-- Div containing the buttons for multiple-choice answers -->
+                <div>
+
+                    <!-- Each button triggers the JavaScript function "checkButtonAnswer" -->
+                    <!-- The boolean argument specifies whether the choice is correct -->
+                    <button id="bev" onClick="checkButtonAnswer(false)">cozy hot bev</button>
+                    <br> <!-- Line break for better visual layout -->
+                    <button id="steps" onClick="checkButtonAnswer(false)">10000 steps</button>
+                    <br>
+                    <button id="show" onClick="checkButtonAnswer(false)">Psychological mystery-crime drama thrillers</button>
+                    <br>
+                    <button id="luke" onClick="checkButtonAnswer(false)">luke</button>
+                    <br>
+                    <button id="nana" onClick="checkButtonAnswer(true)">banana</button>
+
+                </div>
+
+            </div>
+
+            <!-- Div for the second section: Free Response -->
+            <div class="section">
+
+                <!-- Title for the free-response part -->
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <!-- The question for the free-response section -->
+                <h3>
+                    What's the cat's name who you love the best?
+                </h3>
+
+                <!-- Placeholder for the answer, will be filled by JavaScript -->
+                <h3>
+                    <p id="answer-text"></p>
+                </h3>
+
+                <!-- Form to handle the free-response answer -->
+                <form onsubmit="return checkTextAnswer()">
+
+                    <!-- Text input field -->
+                    <input type="text" id="answer-input" required autocomplete="off">
+
+                    <!-- Submit button -->
+                    <input type="submit" value="Submit">
+
+                </form>
+            </div>
+        </div>
+    </body> <!-- Ends the body of the HTML document -->
+</html> <!-- Ends the HTML document -->

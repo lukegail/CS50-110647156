@@ -1,0 +1,62 @@
+body {
+    background-color: #111111;
+}
+
+.navbar {
+    background-color: #222222;
+    z-index: 1000;
+}
+
+.navbar-collapse {
+    background-color: #222222;
+  }
+
+
+.overlay-container {
+    position: relative;
+  }
+
+.full-width {
+    width: 100%;
+}
+
+.overlay-iframe {
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    width: 100%;  /* Adjust to your desired width */
+    height: 400px;  /* Adjust to your desired height */
+    transform: translate(-50%, -50%) scale(0.7);
+}
+
+/* Default styles */
+.horo1, .horo2, .horo3 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.horo1 {
+    height: 190px; /* Or a value that you're comfortable with for larger screens */
+}
+
+.horo2 {
+height: 100px; /* Or a value that you're comfortable with for larger screens */
+margin: 0;
+padding: 0;
+border: none;
+}
+
+.horo3 {
+    height: 650px; /* Or a value that you're comfortable with for larger screens */
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+    .horo2 {
+        height: 200px;
+    }
+}

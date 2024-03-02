@@ -1,0 +1,107 @@
+// Copies a BMP file, flipping any upside-down (negative 'biHeight' value) image right-side-up (positive 'biHeight' value).
+// the TO DO is line 65
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#include "bmp.h"
+
+int main(int argc, char *argv[])
+{
+    // Ensure proper usage
+    if (argc != 3)
+    {
+        printf("Usage: copy infile outfile\n");
+        return 1;
+    }
+
+    // Remember filenames
+    char *infile = argv[1];
+    char *outfile = argv[2];
+
+    // Open input file
+    FILE *inptr = fopen(infile, "r"); //"r" mode: for reading. If the file does not exist, fopen returns NULL.
+    if (inptr == NULL)
+    {
+        printf("Could not open %s.\n", infile);
+        return 2;
+    }
+
+    // Open output file
+    FILE *outptr = fopen(outfile, "w"); //"w" mode: for writing. If the file does not exist, fopen creates it. If the file exists, fopen truncates it to zero length (clears its contents).
+    if (outptr == NULL)
+    {
+        fclose(inptr);
+        printf("Could not create %s.\n", outfile);
+        return 3;
+    }
+
+    // Read infile's BITMAPFILEHEADER
+    BITMAPFILEHEADER bf; // declare variable 'bf' of type BITMAPFILEHEADER struct
+    fread(&bf, sizeof(BITMAPFILEHEADER), 1, inptr); // read the number of bytes equal to the size of a BITMAPFILEHEADER struct...
+                                                    // ...from the file pointed to by 'inptr' into the memory location of 'bf'.
+
+
+    // Read infile's BITMAPINFOHEADER
+    BITMAPINFOHEADER bi; // declare variable 'bf' of type BITMAPINFOHEADER struct
+    fread(&bi, sizeof(BITMAPINFOHEADER), 1, inptr); // read the number of bytes equal to the size of a BITMAPINFOHEADER struct...
+                                                    // ...from the file pointed to by 'inptr' into the memory location of 'bi'.
+
+    // Ensure infile is (likely) a 24-bit uncompressed BMP 4.0
+    if (bf.bfType != 0x4d42 || bf.bfOffBits != 54 || bi.biSize != 40 ||
+        bi.biBitCount != 24 || bi.biCompression != 0)
+    {
+        fclose(outptr);
+        fclose(inptr);
+        printf("Unsupported file format.\n");
+        return 4;
+    }
+
+    printf("bi.biHeight: %i\n", bi.biHeight);
+
+    // Write outfile's BITMAPFILEHEADER
+    fwrite(&bf, sizeof(BITMAPFILEHEADER), 1, outptr);
+
+    bi.biHeight = abs(bi.biHeight); ////////////////////////////// this line is the only TO DO in this assignment.
+
+    // Write outfile's BITMAPINFOHEADER
+    fwrite(&bi, sizeof(BITMAPINFOHEADER), 1, outptr);
+
+    // Determine padding for scanlines
+    int padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4;
+
+    // Iterate over infile's scanlines
+    for (int i = 0, biHeight = abs(bi.biHeight); i < biHeight; i++)
+    {
+        // Iterate over pixels in scanline
+        for (int j = 0; j < bi.biWidth; j++)
+        {
+            // Temporary storage
+            RGBTRIPLE triple;
+
+            // Read RGB triple from infile
+            fread(&triple, sizeof(RGBTRIPLE), 1, inptr);
+
+            // Write RGB triple to outfile
+            fwrite(&triple, sizeof(RGBTRIPLE), 1, outptr);
+        }
+
+        // Skip over padding, if any
+        fseek(inptr, padding, SEEK_CUR);
+
+        // Then add it back (to demonstrate how)
+        for (int k = 0; k < padding; k++)
+        {
+            fputc(0x00, outptr);
+        }
+    }
+
+    // Close infile
+    fclose(inptr);
+
+    // Close outfile
+    fclose(outptr);
+
+    // Success
+    return 0;
+}
