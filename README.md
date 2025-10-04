@@ -13,9 +13,9 @@ Many of the C programs in the earlier weeks rely on a special `cs50.h` library p
 While this repository contains all my weekly assignments, the projects below are the ones I'm most proud of. They showcase my ability to tackle complex logical problems.
 
 ### 1. Tideman (Week 3)
-* **Location:** `/wk3/tideman/`
-* **Description:** This was a notoriously challenging C program designed to simulate the "Tideman" voting method. The goal was to take voter preferences, represent them in a graph, and determine the winner without creating cycles in the graph.
-* **Skills Demonstrated:** Algorithmic thinking, recursion, data structures (graphs), and complex logical problem-solving. This project required careful debugging and a systematic approach to tracing the flow of data.
+* **Location:** [wk3/tideman/tideman.c](https://github.com/lukegail/CS50-110647156/blob/main/wk3/tideman/tideman.c)
+* **Description:** This program simulates the "Tideman" ranked-pairs voting method. The core challenge was to lock in pairs of candidates to a directed graph without creating cycles. To solve this, I implemented a recursive depth-first search (DFS) algorithm to detect cycles before locking in an edge.
+* **Skills Demonstrated:** Algorithmic thinking (recursion, depth-first search), data structures (directed graphs), complex logical problem-solving, and systematic debugging.
 
 ### 2. Speller (Week 5)
 * **Location:** `/wk5/speller/`
